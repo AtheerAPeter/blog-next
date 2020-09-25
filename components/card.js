@@ -1,17 +1,22 @@
 import Link from "next/link";
-const Card = ({ name }) => {
+import MyImage from "../components/lazyload";
+
+const Card = ({ article }) => {
   return (
     <>
       <div className="img">
-        <img src="./images/grid.png" alt="" />
-        <h4>{name ? name : "no name"}</h4>
-        <small>By FikraSpace</small>
-        <span className="link">
-          <Link href="article">
-            <a>Reade article</a>
-          </Link>
-          <span>June 19, 2020</span>
-        </span>
+        {/* <img src={article.image} alt="" /> */}
+        <MyImage image={article.image} />
+        <div className="card-text">
+          <h4>{article.title}</h4>
+          <small>By FikraSpace</small>
+          <span className="link">
+            <Link href={`/articles/${article.id}`}>
+              <a>Reade article</a>
+            </Link>
+            <span>June 19, 2020</span>
+          </span>
+        </div>
       </div>
     </>
   );

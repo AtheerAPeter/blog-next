@@ -205,8 +205,14 @@ footer .rights {
 }
 
 .blog-items .img {
+  justify-content: space-between;
   display: flex;
   flex-direction: column;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.blog-items .img .card-text {
+  margin: 0 10px 5px 10px;
 }
 
 .blog-items .img .link {

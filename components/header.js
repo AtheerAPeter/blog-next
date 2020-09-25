@@ -4,7 +4,11 @@ const Header = () => {
       <header id="nav">
         <div className="container">
           <div className="content">
-            <span className="logo">FikraCamps</span>
+            <span className="logo">
+              <a style={{ color: "#000", textDecoration: "none" }} href="/">
+                FikraCamps
+              </a>{" "}
+            </span>
             <ul>
               <li>Home</li>
               <li>About</li>

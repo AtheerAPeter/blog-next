@@ -1,14 +1,22 @@
-import Link from "next/link";
+import { useState, useEffect } from "react";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import Card from "../components/card";
-const Home = () => {
+import MyImage from "../components/lazyload";
+
+const Home = (props) => {
+  const [data, setData] = useState([]);
+  console.log(props.posts);
+  useEffect(() => {
+    setData(props.posts.articles);
+  }, []);
   return (
     <>
       <Header />
       <main>
         <section className="home-cover">
-          <img src="./images/ee782db0-8576-11ea-a8c8-4115a993fbdf.png" alt="" />
+          {/* <img src="./images/coverpic.jpg" alt="" /> */}
+          <MyImage image="./images/coverpic.jpg" />
           <div className="overlay" id="overlay">
             <div className="container">
               <h1>Simple Blog.</h1>
@@ -19,18 +27,9 @@ const Home = () => {
         <section className="blog-list">
           <div className="container">
             <div className="blog-items">
-              <Card name="first" />
-              <Card name="second" />
-              <Card name="third" />
-              <Card name="fourth" />
-              <Card name="fifth" />
-              <Card />
-              <Card />
-              <Card />
-              <Card />
-              <Card />
-              <Card />
-              <Card />
+              {data.map((item) => (
+                <Card key={item.id} article={item} />
+              ))}
             </div>
           </div>
         </section>
@@ -39,5 +38,16 @@ const Home = () => {
     </>
   );
 };
+
+export async function getStaticProps() {
+  const res = await fetch("https://mashriq.herokuapp.com/dash/v1/articles");
+  const posts = await res.json();
+
+  return {
+    props: {
+      posts,
+    },
+  };
+}
 
 export default Home;
