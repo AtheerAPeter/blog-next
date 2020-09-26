@@ -29,6 +29,7 @@ header {
   padding: 20px 0;
   border: 1px solid rgba(0, 0, 0, 0.05);
   transition: box-shadow 0.5s ease-in-out;
+  height: 8vh;
 }
 
 header .content {
@@ -58,7 +59,7 @@ header .logo {
 }
 
 main {
-  margin-top: 100px;
+  margin-top: 8vh;
 }
 
 .title-box {
@@ -128,7 +129,31 @@ footer .rights {
   object-fit: cover;
   animation: photo 7s linear infinite;
 }
+.login-page {
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
 
+.login-page input {
+  padding: 10px;
+  border: none;
+  background-color: #eee;
+  border-radius: 10px;
+  outline: none;
+}
+
+.login-page button {
+  border: none;
+  background-color: #fce00d;
+  color: white;
+  padding: 10px 20px;
+  width: 100%;
+  border-radius: 10px;
+  outline: none;
+}
 @keyframes photo {
   0% {
     transform: scale(1);
@@ -156,7 +181,12 @@ footer .rights {
   right: 0;
   left: 0;
   bottom: 0;
-  background-color: #04040447;
+  background: rgb(1, 0, 14);
+  background: radial-gradient(
+    circle,
+    rgba(1, 0, 14, 0.13209033613445376) 0%,
+    rgba(0, 0, 0, 0.6054796918767507) 95%
+  );
   display: flex;
 }
 
@@ -205,10 +235,15 @@ footer .rights {
 }
 
 .blog-items .img {
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
   justify-content: space-between;
   display: flex;
   flex-direction: column;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease-in-out;
+}
+
+.blog-items .img:hover {
+  transform: scale(1.02);
 }
 
 .blog-items .img .card-text {
@@ -229,7 +264,9 @@ footer .rights {
 
 .blog-items .img small {
   color: #626161;
-  margin-bottom: 20px;
+  display: block;
+  margin: 10px 0;
+  font-weight: 600;
 }
 
 .blog-items .img .link span {
@@ -251,11 +288,12 @@ footer .rights {
   .overlay .container {
     margin-left: 30px;
   }
-  #nav .content {
-    padding: 0 20px;
-  }
+
   footer .content {
     padding: 0 20px;
+  }
+  .container {
+    padding: 0 20px 0 20px;
   }
 }
 

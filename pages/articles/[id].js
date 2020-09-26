@@ -5,6 +5,7 @@ import moment from "moment";
 import MyImage from "../../components/lazyload";
 
 const Articles = (props) => {
+  console.log(props);
   const [article, setArticle] = useState([]);
 
   useEffect(() => {
@@ -33,24 +34,35 @@ const Articles = (props) => {
   );
 };
 
-export async function getStaticPaths() {
-  const res = await fetch("https://mashriq.herokuapp.com/dash/v1/articles");
-  const posts = await res.json();
+//this is server side rendering and it wont be built with npm run build because it needs a server for each time a request is made
 
-  const paths = posts.articles.map((post) => ({
-    params: { id: post.id.toString() },
-  }));
-
-  return { paths, fallback: false };
-}
-
-export async function getStaticProps({ params }) {
-  const res = await fetch(
-    `https://mashriq.herokuapp.com/dash/v1/article/${params.id}`
-  );
+export async function getServerSideProps({ params }) {
+  const res = await fetch(`http://localhost:3000/articles/${params.id}`);
   const post = await res.json();
 
-  return { props: { post } };
+  return { props: { post: post } };
 }
+
+//this is static site generation the first block generates a page for each article in the api then the second block will send the approperiate one to the client as requested
+
+// export async function getStaticPaths() {
+//   const res = await fetch("https://mashriq.herokuapp.com/dash/v1/articles");
+//   const posts = await res.json();
+
+//   const paths = posts.articles.map((post) => ({
+//     params: { id: post.id.toString() },
+//   }));
+
+//   return { paths, fallback: false };
+// }
+
+// export async function getStaticProps({ params }) {
+//   const res = await fetch(
+//     `https://mashriq.herokuapp.com/dash/v1/article/${params.id}`
+//   );
+//   const post = await res.json();
+
+//   return { props: { post } };
+// }
 
 export default Articles;

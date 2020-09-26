@@ -1,5 +1,6 @@
 import Link from "next/link";
 import MyImage from "../components/lazyload";
+import moment from "moment";
 
 const Card = ({ article }) => {
   return (
@@ -9,12 +10,12 @@ const Card = ({ article }) => {
         <MyImage image={article.image} />
         <div className="card-text">
           <h4>{article.title}</h4>
-          <small>By FikraSpace</small>
+          <small>{article.athor}</small>
           <span className="link">
             <Link href={`/articles/${article.id}`}>
-              <a>Reade article</a>
+              <a>Read article</a>
             </Link>
-            <span>June 19, 2020</span>
+            <span>{moment(article.updatedAt).format("ll")}</span>
           </span>
         </div>
       </div>

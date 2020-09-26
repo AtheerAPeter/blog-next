@@ -15,8 +15,10 @@ const Home = (props) => {
       <Header />
       <main>
         <section className="home-cover">
-          {/* <img src="./images/coverpic.jpg" alt="" /> */}
-          <MyImage image="./images/coverpic.jpg" />
+          <img src="./images/coverpic.jpg" alt="" />
+
+          {/* no lazy loading needed for the cover photo */}
+          {/* <MyImage className="cover-img" image="./images/coverpic.jpg" /> */}
           <div className="overlay" id="overlay">
             <div className="container">
               <h1>Simple Blog.</h1>
@@ -39,15 +41,22 @@ const Home = (props) => {
   );
 };
 
-export async function getStaticProps() {
-  const res = await fetch("https://mashriq.herokuapp.com/dash/v1/articles");
+export async function getServerSideProps() {
+  const res = await fetch(`http://localhost:3000/api/hello`);
   const posts = await res.json();
 
-  return {
-    props: {
-      posts,
-    },
-  };
+  return { props: { posts } };
 }
+
+// export async function getStaticProps() {
+//   const res = await fetch("https://mashriq.herokuapp.com/dash/v1/articles");
+//   const posts = await res.json();
+
+//   return {
+//     props: {
+//       posts,
+//     },
+//   };
+// }
 
 export default Home;
