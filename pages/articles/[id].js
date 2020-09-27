@@ -9,7 +9,7 @@ const Articles = (props) => {
   const [article, setArticle] = useState([]);
 
   useEffect(() => {
-    setArticle(props.post.article);
+    setArticle(props.post);
   }, []);
   return (
     <>
@@ -37,7 +37,7 @@ const Articles = (props) => {
 //this is server side rendering and it wont be built with npm run build because it needs a server for each time a request is made
 
 export async function getServerSideProps({ params }) {
-  const res = await fetch(`http://localhost:3000/articles/${params.id}`);
+  const res = await fetch(`http://localhost:3000/api/articleid/${params.id}`);
   const post = await res.json();
 
   return { props: { post: post } };

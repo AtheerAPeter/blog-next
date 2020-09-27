@@ -6,7 +6,6 @@ import MyImage from "../components/lazyload";
 
 const Home = (props) => {
   const [data, setData] = useState([]);
-  console.log(props.posts);
   useEffect(() => {
     setData(props.posts.articles);
   }, []);

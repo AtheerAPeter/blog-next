@@ -1,5 +1,5 @@
 import fs from "fs";
-import path from "path";
+import path, { parse } from "path";
 export default (req, res) => {
   const {
     query: { id },
@@ -10,9 +10,7 @@ export default (req, res) => {
   );
 
   // JSON.parse to get itback to json then JSON.stringify to git t back to text for sending
-  res.end(
-    JSON.stringify(
-      JSON.parse(dataFile).articles.filter((item) => item.id == id)
-    )
-  );
+
+  const result = JSON.parse(dataFile).articles.filter((item) => item.id == id);
+  res.end(JSON.stringify(result[0]));
 };
