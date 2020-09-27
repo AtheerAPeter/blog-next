@@ -41,7 +41,7 @@ const Home = (props) => {
 };
 
 export async function getServerSideProps() {
-  const res = await fetch(`http://localhost:3000/api/hello`);
+  const res = await fetch(`https://blog-next-dusky.vercel.app/api/hello`);
   const posts = await res.json();
 
   return { props: { posts } };

@@ -37,7 +37,9 @@ const Articles = (props) => {
 //this is server side rendering and it wont be built with npm run build because it needs a server for each time a request is made
 
 export async function getServerSideProps({ params }) {
-  const res = await fetch(`http://localhost:3000/api/articleid/${params.id}`);
+  const res = await fetch(
+    `https://blog-next-dusky.vercel.app/api/articleid/${params.id}`
+  );
   const post = await res.json();
 
   return { props: { post: post } };
