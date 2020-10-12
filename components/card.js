@@ -3,6 +3,7 @@ import MyImage from "../components/lazyload";
 import moment from "moment";
 
 const Card = ({ article }) => {
+  console.log(article);
   return (
     <>
       <div className="img">
@@ -10,7 +11,7 @@ const Card = ({ article }) => {
         <MyImage image={article.image} />
         <div className="card-text">
           <h4>{article.title}</h4>
-          <small>{article.athor}</small>
+          <small>{article.description}</small>
           <span className="link">
             <Link href={`/articles/${article.id}`}>
               <a>Read article</a>

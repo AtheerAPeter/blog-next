@@ -5,11 +5,11 @@ import moment from "moment";
 import MyImage from "../../components/lazyload";
 
 const Articles = (props) => {
-  console.log(props);
+  
   const [article, setArticle] = useState([]);
 
   useEffect(() => {
-    setArticle(props.post);
+    setArticle(props.post.article);
   }, []);
   return (
     <>
@@ -24,7 +24,7 @@ const Articles = (props) => {
         </section>
         <section className="container cover">
           {/* <img id="coverImage" src={article.image} alt="" /> */}
-          <MyImage image={article.image} />
+          <MyImage  image={article.image} />
 
           <div dangerouslySetInnerHTML={{ __html: article.text }}></div>
         </section>
@@ -38,7 +38,7 @@ const Articles = (props) => {
 
 export async function getServerSideProps({ params }) {
   const res = await fetch(
-    `https://blog-next-dusky.vercel.app/api/articleid/${params.id}`
+    `https://mashriq.herokuapp.com/dash/v1/article/${params.id}`
   );
   const post = await res.json();
 

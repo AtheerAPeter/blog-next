@@ -235,11 +235,16 @@ footer .rights {
 }
 
 .blog-items .img {
+  height: fit-content;
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
-  justify-content: space-between;
   display: flex;
   flex-direction: column;
   transition: transform 0.2s ease-in-out;
+}
+.blog-items img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
 }
 
 .blog-items .img:hover {
@@ -247,7 +252,7 @@ footer .rights {
 }
 
 .blog-items .img .card-text {
-  margin: 0 10px 5px 10px;
+  margin: 5px 10px 10px 10px;
 }
 
 .blog-items .img .link {
@@ -255,22 +260,17 @@ footer .rights {
   justify-content: space-between;
 }
 
-.blog-items .img img {
-  object-fit: cover;
-
-  margin-bottom: 10px;
-  max-width: 100%;
-}
-
 .blog-items .img small {
   color: #626161;
   display: block;
-  margin: 10px 0;
-  font-weight: 600;
+  margin: 5px 0 30px 0;
+  font-weight: 400;
 }
 
 .blog-items .img .link span {
   color: #626161;
+  margin-right: 10px;
+  font-size: 14px;
 }
 
 @media screen and (max-width: 1024px) {
