@@ -14,7 +14,7 @@ const Home = (props) => {
       <Header />
       <main>
         <section className="home-cover">
-          <img src="./images/coverpic.jpg" alt="" />
+          <img src="./images/cover.jpeg" alt="" />
 
           {/* no lazy loading needed for the cover photo */}
           {/* <MyImage className="cover-img" image="./images/coverpic.jpg" /> */}
